@@ -2,7 +2,7 @@
 
 const { resolve } = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { DefinePlugin, NormalModuleReplacementPlugin } = require('webpack');
+const { DefinePlugin, NormalModuleReplacementPlugin, ContextReplacementPlugin } = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 const packageJson = require('./package.json');
@@ -39,6 +39,13 @@ module.exports = (env = {}) => {
       ],
     },
     plugins: [
+      // https://github.com/Automattic/mongoose/issues/7476
+      // new ContextReplacementPlugin(/mongodb/),
+      new ContextReplacementPlugin(/require_optional/),
+      new ContextReplacementPlugin(/aws4/),
+      new ContextReplacementPlugin(/mongodb-client-encryption/),
+      new ContextReplacementPlugin(/operations/),
+      new ContextReplacementPlugin(/mongoose/),
       new CleanWebpackPlugin(),
       new DefinePlugin({
         VERSION: JSON.stringify(packageJson.version),
