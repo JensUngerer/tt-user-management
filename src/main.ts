@@ -1,8 +1,11 @@
 import { App } from './app/app';
-import { Logger } from './app/common/logger';
+import { IUserData } from './app/i-user-data';
+import dotenv from 'dotenv';
 
-Logger.logTask('SYSTEM', 'STARTING');
+dotenv.config();
+const app = App.run();
 
-App.run();
-
-Logger.logTask('SYSTEM', 'FINISHED');
+const userDataPromise = app.getUserDataViaCommandLineInterface();
+userDataPromise.then((userData: IUserData) =>  {
+    app.storeUserDataInDataBase(userData);
+});
