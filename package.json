@@ -47,7 +47,8 @@
   },
   "dependencies": {
     "crypto-js": "^4.0.0",
-    "inquirer": "^6.5.2",
+    "inquirer": "^8.0.0",
+    "mongodb-client-encryption": "^1.2.3",
     "mongoose": "^5.12.1"
   }
 }
