@@ -45,8 +45,8 @@ export class App {
     const completeDataBaseString = process.env.DATA_BASE_STRING + '/' + process.env.DATA_BASE_NAME;
 
     this.connection = mongoose.createConnection(completeDataBaseString, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
       // user: process.env.DATA_BASE_USER_NAME,
       // pass: process.env.DATA_BASE_PASSWORD
     });
